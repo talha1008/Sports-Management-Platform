@@ -72,7 +72,7 @@ export const confirmMembership = async (req, res) => {
                 if (!order) {
                     order = await Membership.create({ user: user_id });
                 }
-                order.orders.push(newPayment._id);
+                order.clubs.push(newPayment._id);
 
                 await Promise.all([order.save(), newPayment.save()]);
             } else {

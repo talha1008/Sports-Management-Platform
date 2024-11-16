@@ -6,7 +6,7 @@ const MembershipSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    orders: [
+    clubs: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Payment",

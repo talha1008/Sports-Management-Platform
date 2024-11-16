@@ -3,7 +3,7 @@ import { MdSportsCricket } from "react-icons/md";
 import { IoMdFootball } from "react-icons/io";
 import useHandlePay from "../hooks/useHandlePay";
 
-const EventCard = ({ club }) => {
+const ClubCard = ({ club }) => {
 	const { loading, handlePay } = useHandlePay();
 
 	const handlePayInit = async () => {
@@ -35,4 +35,4 @@ const EventCard = ({ club }) => {
 	)
 }
 
-export default EventCard;
+export default ClubCard;

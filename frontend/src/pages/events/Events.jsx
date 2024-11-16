@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
-import useGetClubs from "../../hooks/useGetClubs";
-import EventCard from "../../components/EventCard";
+import useGetClubs from "../../hooks/useGetClubs";``
+import ClubCard from "../../components/ClubCard";
 
 const Events = () => {
   const { loading, clubs } = useGetClubs();
@@ -30,7 +30,7 @@ const Events = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {clubData.map((club, index) => (
-              <EventCard key={index} club={club} />
+              <ClubCard key={index} club={club} />
             ))}
           </div>
         )}
