@@ -1,6 +1,7 @@
 {
     "clubs": [
         {
+            "id": "CL_ENSY1234.CR",
             "name": "Synergy",
             "sport": "Cricket",
             "institute": "Techno Main Saltlake",
@@ -8,6 +9,7 @@
             "fees": 250
         },
         {
+            "id": "CL_ENCH4567.FB",
             "name": "Charisma",
             "sport": "Football",
             "institute": "Techno Main Saltlake",
@@ -15,6 +17,7 @@
             "fees": 250
         },
         {
+            "id": "CL_ENFI7890.BB",
             "name": "Finnesse",
             "sport": "Basketball",
             "institute": "Techno Main Saltlake",
