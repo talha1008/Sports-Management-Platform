@@ -8,6 +8,7 @@ dotenv.config();
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
+import eventRoutes from "./routes/event.routes.js";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -40,6 +41,7 @@ app.get("/api/v1", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/events", eventRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server Listening on Port ${PORT}`);

@@ -13,7 +13,7 @@ const Navbar = () => {
         {
             text: "Home",
             icon: <MdHome className="w-5 h-5" />,
-            link: "",
+            link: "/",
         },
         {
             text: "Clubs & Events",
@@ -59,6 +59,7 @@ const Navbar = () => {
                         className="w-8 h-8 text-gray-700 cursor-pointer"
                     />
                 </div>
+
             </div>
 
             {openMenu && (
