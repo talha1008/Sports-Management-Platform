@@ -6,6 +6,7 @@ import { HiMiniEyeSlash } from 'react-icons/hi2';
 import useLogin from '../../hooks/useLogin';
 import useForgotPassword from '../../hooks/useForgotPassword';
 import toast from "react-hot-toast";
+import Spinner from "../../components/Spinner";
 
 const Login = () => {
 	const [inputs, setInputs] = useState({ email: '', password: '' });
@@ -18,7 +19,7 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if(forgotPasswordMode) {
+		if (forgotPasswordMode) {
 			return;
 		}
 		if (!inputs.email || !inputs.password) {
@@ -89,9 +90,15 @@ const Login = () => {
 								</div>
 
 								<div className="flex flex-col items-center justify-center mt-10">
-									<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
-										Login
-									</button>
+									{loading ? (
+										<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
+											<Spinner />
+										</button>
+									) : (
+										<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
+											Login
+										</button>
+									)}
 
 									<button onClick={handleForgotPassword} className="text-gray-800 hover:underline hover:text-green-700 mt-3">
 										Forgot Password?
@@ -138,9 +145,15 @@ const Login = () => {
 								</div>
 
 								{otpSent && (<div className="flex flex-col items-center justify-center mt-10">
-									<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={otpLoading}>
-										Reset Password
-									</button>
+									{otpLoading ? (
+										<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={otpLoading}>
+											<Spinner />
+										</button>
+									) : (
+										<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={otpLoading}>
+											Reset Password
+										</button>
+									)}
 								</div>)}
 							</form>
 						</>

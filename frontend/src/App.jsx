@@ -11,10 +11,10 @@ import CompletePayment from "./pages/payments/CompletePayment";
 import CancelPayment from "./pages/payments/CancelPayment";
 import CompleteRegistration from "./pages/registration/CompleteRegistration";
 import CancelRegistration from "./pages/registration/CancelRegistration";
+import MyRegistrations from "./pages/registration/MyRegistrations";
 
 function App() {
   const { authUser } = useAuthContext();
-  console.log(authUser);
 
   return (
     <>
@@ -30,6 +30,7 @@ function App() {
           <Route path="/cancel-payment" element={authUser ? <CancelPayment /> : <Navigate to="/login" />} />
           <Route path="/complete-registration" element={authUser ? <CompleteRegistration /> : <Navigate to="/login" />} />
           <Route path="/cancel-registration" element={authUser ? <CancelRegistration /> : <Navigate to="/login" />} />
+          <Route path="/registrations" element={authUser ? <MyRegistrations /> : <Navigate to="/login" />} />
         </Routes>
 
         <Toaster />

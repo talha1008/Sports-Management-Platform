@@ -1,5 +1,5 @@
 import express from "express";
-import { getClubById, getClubs, getEventById, getEvents, getMyClubs } from "../controllers/events.controller.js";
+import { getClubById, getClubs, getEventById, getEvents, getMyClubs, getMyRegistrations } from "../controllers/events.controller.js";
 
 const router = express();
 
@@ -8,5 +8,6 @@ router.get("/get-club/:id", getClubById);
 router.get("/my-clubs/:id", getMyClubs);
 router.get("/get-events", getEvents);
 router.get("/get-event/:id", getEventById);
+router.get("/my-registrations/:id", getMyRegistrations);
 
 export default router;

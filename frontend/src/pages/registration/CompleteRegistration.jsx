@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Navbar from "../../components/Navbar";
 import useGetEventById from '../../hooks/useGetEventById';
 import useConfirmRegistration from '../../hooks/useConfirmRegistration';
+import Spinner from '../../components/Spinner';
 
 const CompleteRegistration = () => {
 	const location = useLocation();
@@ -93,7 +94,7 @@ const CompleteRegistration = () => {
 									onClick={buyMembership}
 									disabled={payLoading}
 								>
-									{payLoading ? "Loading..." : 'Press to Confirm Registration'}
+									{payLoading ? <Spinner /> : 'Press to Confirm Registration'}
 								</button>
 							</div>
 						</>
@@ -127,6 +128,10 @@ const CompleteRegistration = () => {
 									<div className='mb-2 flex flex-col gap-1'>
 										<span className='text-lg font-bold'>Member Details</span>
 										<div className='flex justify-between'>
+											<span className='font-semibold'>Team Name:</span>
+											<span className='font-medium'> {buyData.team_name}</span>
+										</div>
+										<div className='flex justify-between'>
 											<span className='font-semibold'>Team Lead:</span>
 											<span> {buyData.team_lead_name}</span>
 										</div>
@@ -146,7 +151,7 @@ const CompleteRegistration = () => {
 										<div>
 											{buyData.members.map((member, _idx) => (
 												<div className='flex justify-between' key={_idx}>
-													<span>Member {_idx+1}:</span>
+													<span>Member {_idx + 1}:</span>
 													<span>{member.name}</span>
 												</div>
 											))}

@@ -4,6 +4,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import useGetMyMemberships from "../../hooks/getMyMemberships";
 import MembershipCard from "../../components/MembershipCard";
 import { IoIosWarning } from "react-icons/io";
+import Spinner from "../../components/Spinner";
 
 const Home = () => {
     const { authUser } = useAuthContext();
@@ -13,7 +14,7 @@ const Home = () => {
     const getMemberships = async () => {
         const data = await memberships();
         setClubData(data);
-    }
+    };
 
     useEffect(() => {
         getMemberships();
@@ -31,25 +32,30 @@ const Home = () => {
                 <img src="master.png" alt="master bg" className="lg:w-[700px] md:w-[500px]" />
             </div>
 
-            {clubData.length !== 0 ? (<div className="flex flex-col w-full p-4">
+            <div className="flex flex-col w-full p-4">
                 <h1 className="text-[30px] lg:text-[50px] font-semibold text-gray-700">My Clubs</h1>
                 <div className="bg-gray-300 w-full h-[1.5px] mb-7"></div>
-                {loading ? (<span>Loading...</span>) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                        {clubData.slice().reverse().map((club, index) => (
-                            <MembershipCard key={index} club={club} />
-                        ))}
+
+                {clubData.length !== 0 ? (
+                    loading ? (
+                        <Spinner />
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                            {clubData.slice().reverse().map((club, index) => (
+                                <MembershipCard key={index} club={club} />
+                            ))}
+                        </div>
+                    )
+                ) : (
+                    <div className="flex items-center justify-center gap-4">
+                        <IoIosWarning className="text-2xl text-yellow-600" />
+                        <h1 className="text-xl font-semibold text-gray-600">Not Enrolled in any Club...Enroll Now!!!</h1>
+                        <IoIosWarning className="text-2xl text-yellow-600" />
                     </div>
                 )}
-            </div>) : (
-                <div className="flex items-center justify-center gap-4">
-                    <IoIosWarning className="text-2xl text-yellow-600" />
-                    <h1 className="text-xl font-semibold text-gray-600">Not Enrolled in any Club...Enrol Now!!!</h1>
-                    <IoIosWarning className="text-2xl text-yellow-600" />
-                </div>
-            )}
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

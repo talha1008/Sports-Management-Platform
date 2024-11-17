@@ -4,6 +4,7 @@ import useGetClubs from "../../hooks/useGetClubs"; ``
 import ClubCard from "../../components/ClubCard";
 import useGetEvents from "../../hooks/useGetEvents";
 import EventCard from "../../components/EventCard";
+import Spinner from "../../components/Spinner";
 
 const Events = () => {
   const { loading, clubs } = useGetClubs();
@@ -50,7 +51,7 @@ const Events = () => {
         <div className="bg-gray-300 w-full h-[1.5px] mb-7"></div>
 
         {enLoading ? (
-          <span>Loading...</span>
+          <Spinner />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {eventsData.map((event, index) => (

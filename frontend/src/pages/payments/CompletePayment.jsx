@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import useBuyMembership from '../../hooks/useBuyMembership';
 import { useState, useEffect } from 'react';
 import useGetClubById from '../../hooks/useGetClubById';
-//import Spinner from "../../components/Spinner";
+import Spinner from "../../components/Spinner";
 import Navbar from "../../components/Navbar";
 
 const CompletePayment = () => {
@@ -52,7 +52,7 @@ const CompletePayment = () => {
         <img src="logo.png" alt="logo" className='w-full h-[80px]' />
 
           {loading && !clubInfo && !paramsData ? (
-            {/*<Spinner />*/}
+            <Spinner />
           ) : !buyData ? (
             <>
               <h2 className="text-xl font-semibold mb-4">Just One Step Behind</h2>
@@ -89,7 +89,7 @@ const CompletePayment = () => {
                   onClick={buyMembership}
                   disabled={payLoading}
                 >
-                  {payLoading ? "Loading..." : 'Press to Confirm Membership'}
+                  {payLoading ? <Spinner /> : 'Press to Confirm Membership'}
                 </button>
               </div>
             </>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HiOutlineBars3 } from "react-icons/hi2";
-import { MdHome, MdLogout, MdEmojiEvents } from "react-icons/md";
+import { MdHome, MdLogout, MdEmojiEvents, MdAppRegistration } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
 import useLogout from "../hooks/useLogout";
@@ -24,6 +24,11 @@ const Navbar = () => {
             text: "Notice Board",
             icon: <GrAnnounce className="w-5 h-5" />,
             link: "/notice-board",
+        },
+        {
+            text: "Registrations",
+            icon: <MdAppRegistration className="w-5 h-5" />,
+            link: "/registrations",
         },
     ];
 

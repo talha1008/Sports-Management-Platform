@@ -1,7 +1,9 @@
 import clubsData from "../data/clubs.data.json" assert { type: 'json' };
 import eventsData from "../data/events.data.json" assert { type: 'json' };
+import Event from "../models/event.model.js";
 import Membership from "../models/order.model.js";
 import Payment from "../models/payment.model.js";
+import Registration from "../models/registration.model.js";
 
 export const getClubs = (req, res) => {
     try {
@@ -31,9 +33,6 @@ export const getClubById = (req, res) => {
 export const getMyClubs = async (req, res) => {
     try {
         const userClubs = await Membership.findOne({ user: req.params.id });
-        /*if (!userClubs) {
-            return res.status(400).json({ error: "Not enrolled in any club! Enrol Now...!!!" });
-        }*/
         if (!userClubs) {
             return;
         }
@@ -74,5 +73,26 @@ export const getEventById = (req, res) => {
     } catch (error) {
         console.log(error.message);
         res.status(500).json({ error: "Internal Server error" });
+    }
+}
+
+export const getMyRegistrations = async (req, res) => {
+    try {
+        const userRegs = await Registration.findOne({ user: req.params.id });
+        if (!userRegs) {
+            return;
+        }
+
+        const eventIds = userRegs.events;
+        const events = await Event.find({ _id: { $in: eventIds } });
+
+        if (events) {
+            res.status(200).json(events);
+        } else {
+            res.status(400).json({ error: "Error in Fetching orders" });
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: "Internal Server Error" });
     }
 }

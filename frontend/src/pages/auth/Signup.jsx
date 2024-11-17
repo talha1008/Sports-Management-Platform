@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { HiMiniEyeSlash } from 'react-icons/hi2';
 import useSignup from '../../hooks/useSignup';
+import Spinner from "../../components/Spinner";
 
 const Signup = () => {
 	const [inputs, setInputs] = useState({
@@ -126,9 +127,15 @@ const Signup = () => {
 						</div>
 
 						<div className="flex flex-col items-center justify-center mt-5">
-							<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
+							{loading ? (
+								<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
+								<Spinner />
+							</button>
+							) : (
+								<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={loading}>
 								Signup
 							</button>
+							)}
 
 							<Link to="/login" className="text-gray-800 hover:underline hover:text-green-700 mt-1">
 								Already have an Account? Login

@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import { useParams } from 'react-router-dom';
 import useGetEventById from "../../hooks/useGetEventById";
 import useHandleRegistration from "../../hooks/useHandleRegistration";
+import Spinner from "../../components/Spinner";
 
 const Registration = () => {
 	const [eventData, setEventData] = useState();
@@ -76,7 +77,7 @@ const Registration = () => {
 				<div className="flex gap-6 p-3 w-full items-center justify-around mt-10">
 					{/* Card */}
 					{loading ? (
-						<span>Loading...</span>
+						<Spinner />
 					) : (
 						<div className="flex flex-col gap-2 items-center bg-green-500/30 backdrop-blur-lg p-3 rounded-lg shadow-lg border border-green-500/20 hover:border-4">
 							<img src="/logo.png" alt="logo" className="w-[300px] h-[70px]" />
