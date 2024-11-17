@@ -47,8 +47,8 @@ const CompletePayment = () => {
   return (
     <>
       <Navbar />
-      <div className='flex items-center justify-center min-h-screen bg-gray-100'>
-        <div className="w-[400px] mx-auto p-6 bg-white shadow-md rounded-lg mt-[100px] mb-4">
+      <div className="min-h-screen p-4 flex flex-col items-center justify-center bg-[url('bg1.jpg')] bg-cover bg-center">
+        <div className="w-[400px] mx-auto p-6 bg-white shadow-md rounded-lg mt-[80px] mb-4">
         <img src="logo.png" alt="logo" className='w-full h-[80px]' />
 
           {loading && !clubInfo && !paramsData ? (
@@ -57,7 +57,7 @@ const CompletePayment = () => {
             <>
               <h2 className="text-xl font-semibold mb-4">Just One Step Behind</h2>
               <div className="border-t border-gray-300 pt-4">
-                <h3 className="text-lg font-medium mb-2">Order Invoice</h3>
+                <h3 className="text-lg font-medium mb-2">Membership Invoice</h3>
                 <div className="text-sm space-y-2">
                   <div className="flex justify-between">
                     <span className="font-semibold">Club ID:</span>
@@ -80,7 +80,7 @@ const CompletePayment = () => {
 
                   <div className="flex justify-between">
                     <span className="font-semibold">Membership Fees (per month):</span>
-                    <span>₹ {clubInfo?.fees || 'N/A'}</span>
+                    <span className='font-semibold'>₹ {clubInfo?.fees || 'N/A'}</span>
                   </div>
 
                 </div>
@@ -136,7 +136,7 @@ const CompletePayment = () => {
 
                   <div className="flex justify-between text-lg">
                     <span className="font-semibold">Total:</span>
-                    <span>₹ {buyData.amount}</span>
+                    <span className="font-semibold">₹ {buyData.amount}</span>
                   </div>
                 </div>
               </div>

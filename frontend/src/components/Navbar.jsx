@@ -31,7 +31,7 @@ const Navbar = () => {
         <nav className="fixed top-0 left-0 w-full z-10 bg-white shadow-lg p-4">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                    <img src="logo.png" alt="Logo" className="w-[150px] h-10" />
+                    <img src="/logo.png" alt="Logo" className="w-[150px] h-10" />
                 </div>
                 <div className="hidden md:flex space-x-4 ml-4">
                     {menuOptions.map((item) => (

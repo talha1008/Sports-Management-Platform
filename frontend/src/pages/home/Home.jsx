@@ -19,7 +19,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="min-h-screen p-4 flex flex-col items-center justify-center bg-[url('bg1.jpg')] bg-cover bg-center">
+        <div className="min-h-screen p-4 flex flex-col items-center justify-center bg-[url('/bg1.jpg')] bg-cover bg-center">
             <Navbar />
 
             <div className="flex items-center justify-around w-full p-4 mt-10">
@@ -30,7 +30,7 @@ const Home = () => {
                 <img src="master.png" alt="master bg" className="lg:w-[700px] md:w-[500px]" />
             </div>
 
-            <div className="flex flex-col w-full p-4">
+            {clubData && <div className="flex flex-col w-full p-4">
                 <h1 className="text-[30px] lg:text-[50px] font-semibold text-gray-700">My Clubs</h1>
                 <div className="bg-gray-300 w-full h-[1.5px] mb-7"></div>
                 {loading ? (<span>Loading...</span>) : (
@@ -40,7 +40,7 @@ const Home = () => {
                         ))}
                     </div>
                 )}
-            </div>
+            </div>}
         </div>
     )
 }

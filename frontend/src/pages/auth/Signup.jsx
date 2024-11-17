@@ -24,7 +24,7 @@ const Signup = () => {
 	}
 
 	return (
-		<div className="h-screen p-4 flex items-center justify-center bg-[url('bg1.jpg')] bg-cover bg-center">
+		<div className="h-screen p-4 flex items-center justify-center bg-[url('/bg1.jpg')] bg-cover bg-center">
 			<div className="flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
 				<div className="relative flex w-1/2 shadow-xl border-4 border-r-0 border-green-700">
 					<img src="bg2.png" alt="auth bg" className="w-full h-full object-cover opacity-70" />

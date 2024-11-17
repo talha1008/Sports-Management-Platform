@@ -1,4 +1,5 @@
 import clubsData from "../data/clubs.data.json" assert { type: 'json' };
+import eventsData from "../data/events.data.json" assert { type: 'json' };
 import Membership from "../models/order.model.js";
 import Payment from "../models/payment.model.js";
 
@@ -19,7 +20,7 @@ export const getClubById = (req, res) => {
         if (data) {
             res.status(200).json(data);
         } else {
-            res.status(400).json({ error: "No club such found" });
+            res.status(400).json({ error: "No such club found" });
         }
     } catch (error) {
         console.log(error.message);
@@ -45,5 +46,30 @@ export const getMyClubs = async (req, res) => {
     } catch (err) {
         console.log(err.message)
         res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const getEvents = (req, res) => {
+    try {
+        const data = eventsData.events;
+        return res.status(200).json(data);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: "Internal Server error" });
+    }
+}
+
+export const getEventById = (req, res) => {
+    try {
+        const id = req.params.id;
+        const data = eventsData.events.find(event => event.id === id);
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(400).json({ error: "No such event found" });
+        }
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: "Internal Server error" });
     }
 }
