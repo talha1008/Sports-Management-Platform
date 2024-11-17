@@ -14,6 +14,11 @@ const useGetClubs = () => {
                     "Content-Type": "application/json"
                 }
             });
+
+            if (res.status === 204) {
+                toast.custom(<span>{res.message}</span>)
+            }
+            
             const data = await res.json();
 
             if (data.error) {
