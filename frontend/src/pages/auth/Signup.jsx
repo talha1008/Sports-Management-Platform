@@ -30,8 +30,8 @@ const Signup = () => {
 					<img src="bg2.png" alt="auth bg" className="w-full h-full object-cover opacity-70" />
 					<div className="absolute inset-0 bg-black opacity-30"></div> {/* Black overlay */}
 					<div className="absolute inset-0 flex flex-col items-center justify-center">
-						<h1 className="text-white text-[50px] md:text-[45px] lg:text-[50px] xl:text-[60px] font-bold neon-text z-50 neon-green">Welcome</h1>
-						<h1 className="text-white text-[100px] md:text-[80px] lg:text-[100px] xl:text-[100px] font-bold neon-text z-50 neon-green">Enigma</h1>
+					<h1 className="text-white text-[100px] md:text-[80px] lg:text-[100px] xl:text-[100px] font-bold neon-text z-50 neon-green">The</h1>
+					<h1 className="text-white text-center text-[100px] md:text-[80px] lg:text-[100px] xl:text-[100px] font-bold neon-text z-50 neon-green">Sports Edge</h1>
 					</div>
 				</div>
 
