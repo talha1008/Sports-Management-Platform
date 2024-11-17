@@ -4,6 +4,7 @@ import useGetMyEvents from "../../hooks/useGetMyEvents";
 import RegistrationCard from "../../components/RegistrationCard";
 import { IoIosWarning } from "react-icons/io";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 const MyRegistrations = () => {
     const { loading, myEvents } = useGetMyEvents();
@@ -37,11 +38,11 @@ const MyRegistrations = () => {
                         </div>
                     )
                 ) : (
-                    <div className="flex items-center justify-center gap-4">
+                    <Link className="flex items-center justify-center gap-4" to="/events">
                         <IoIosWarning className="text-2xl text-yellow-600" />
-                        <h1 className="text-xl font-semibold text-gray-600">Not Registered in any Events...Register Now!!!</h1>
+                        <h1 className="text-xl font-semibold text-gray-600 hover:text-green-700">Not Registered in any Events...Register Now!!!</h1>
                         <IoIosWarning className="text-2xl text-yellow-600" />
-                    </div>
+                    </Link>
                 )}
             </div>
         </div>

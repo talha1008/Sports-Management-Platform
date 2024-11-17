@@ -15,9 +15,10 @@ const useForgotPassword = () => {
             template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
             user_id: import.meta.env.VITE_EMAILJS_USER_ID,
             template_params: {
-                from_name: "Enigma",
-                from_email: email,
+                from_name: "TheSportsEdge.com",
+                from_email: "atestemail@gmail.com",
                 to_name: email,
+                to_email: email,
                 message: generatedOTP
             }
         };

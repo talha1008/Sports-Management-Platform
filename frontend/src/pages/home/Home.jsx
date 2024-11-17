@@ -5,6 +5,7 @@ import useGetMyMemberships from "../../hooks/getMyMemberships";
 import MembershipCard from "../../components/MembershipCard";
 import { IoIosWarning } from "react-icons/io";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const { authUser } = useAuthContext();
@@ -47,11 +48,11 @@ const Home = () => {
                         </div>
                     )
                 ) : (
-                    <div className="flex items-center justify-center gap-4">
+                    <Link className="flex items-center justify-center gap-4" to="/events">
                         <IoIosWarning className="text-2xl text-yellow-600" />
-                        <h1 className="text-xl font-semibold text-gray-600">Not Enrolled in any Club...Enroll Now!!!</h1>
+                        <h1 className="text-xl font-semibold text-gray-600 hover:text-green-700">Not Enrolled in any Club...Enroll Now!!!</h1>
                         <IoIosWarning className="text-2xl text-yellow-600" />
-                    </div>
+                    </Link>
                 )}
             </div>
         </div>
