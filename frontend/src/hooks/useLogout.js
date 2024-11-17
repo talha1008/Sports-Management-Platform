@@ -21,7 +21,7 @@ const useLogout = () => {
             if (data.error) {
                 throw new Error(data.error);
             }
-            localStorage.removeItem("NP-user");
+            localStorage.removeItem("SM-user");
             setAuthUser(null);
 
             if (data) {

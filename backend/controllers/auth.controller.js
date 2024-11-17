@@ -78,10 +78,32 @@ export const login = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-	try {
-		res.status(200).json({ message: "Logged out Successfully" });
-	} catch (error) {
-		console.log("Error in Logout controller", error.message);
-		res.status(500).json({ error: "Internal Server Error" });
-	}
+    try {
+        res.status(200).json({ message: "Logged out Successfully" });
+    } catch (error) {
+        console.log("Error in Logout controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 }
+
+export const updatePassword = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email },
+            { password: hashedPassword },
+            { new: true, runValidators: true }
+        );
+
+        if (updatedUser) {
+            res.status(200).json({ message: "Password updated successfully." });
+        } else {
+            res.status(400).json({ error: "Couldn't update the password" });
+        }
+    } catch (error) {
+        console.log("Error in updating password:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
