@@ -18,16 +18,27 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await login(inputs, forgotPasswordMode);
+		if(forgotPasswordMode) {
+			return;
+		}
+		if (!inputs.email || !inputs.password) {
+			toast.error("Please fill all the fields");
+			return;
+		}
+		if (inputs.password.length < 6) {
+			toast.error("Password should be at least 6 characters long");
+			return;
+		}
+		await login(inputs);
 	};
 
 	const handleForgotPassword = async () => {
-		if(!inputs.email) {
+		if (!inputs.email) {
 			toast.error("Enter Email first");
 			return;
 		}
-		await sendOTP(inputs.email);
 		setForgotPasswordMode(true);
+		await sendOTP(inputs.email);
 	};
 
 	const handleOTPSubmit = async (e) => {
@@ -54,6 +65,7 @@ const Login = () => {
 					{!forgotPasswordMode ? (
 						<>
 							<h1 className="text-3xl font-bold text-green-500">Login</h1>
+							<div className="w-10 h-1 bg-green-800 mx-auto my-4 rounded-full mb-8"></div>
 							<form className="w-full" onSubmit={handleSubmit}>
 								<div className="space-y-6 w-full">
 									<div className="flex items-center bg-green-200 rounded-lg w-full">
@@ -95,6 +107,7 @@ const Login = () => {
 						<>
 							<h1 className="text-3xl font-bold text-green-500">Forgot Password</h1>
 							<form className="w-full" onSubmit={handleOTPSubmit}>
+								<div className="w-10 h-1 bg-green-800 mx-auto my-4 rounded-full mb-8"></div>
 								<div className="space-y-6 w-full">
 									<div className="flex items-center bg-green-200 rounded-lg w-full">
 										<MdEmail className="ml-4 text-gray-600 h-10" />
@@ -124,11 +137,11 @@ const Login = () => {
 									)}
 								</div>
 
-								<div className="flex flex-col items-center justify-center mt-10">
+								{otpSent && (<div className="flex flex-col items-center justify-center mt-10">
 									<button className="w-full bg-green-700 text-white text-lg py-2 rounded-full hover:bg-green-500 transition-colors" disabled={otpLoading}>
-										{otpSent ? 'Reset Password' : 'Send OTP'}
+										Reset Password
 									</button>
-								</div>
+								</div>)}
 							</form>
 						</>
 					)}

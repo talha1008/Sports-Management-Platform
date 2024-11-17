@@ -7,10 +7,7 @@ const useLogin = () => {
     const { setAuthUser } = useAuthContext();
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const login = async ({ email, password, forgotPasswordMode = false }) => {
-        const success = handleInputErrors({ email, password, forgotPasswordMode });
-        if (!success) return;
-
+    const login = async ({ email, password }) => {
         setLoading(true);
         try {
             const res = await fetch(`${apiUrl}/auth/login`, {
@@ -45,21 +42,3 @@ const useLogin = () => {
 };
 
 export default useLogin;
-
-function handleInputErrors({ email, password, forgotPasswordMode }) {
-    if (forgotPasswordMode === false) {
-        if (!email || !password) {
-            toast.error("Please fill all the fields");
-            return false;
-        }
-        if (password.length < 6) {
-            toast.error("Password should be at least 6 characters long");
-            return false;
-        }
-    } else {
-        if (!email) {
-            return false;
-        }
-    }
-    return true;
-}
