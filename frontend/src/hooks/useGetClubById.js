@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const useGetClubById = () => {
     const [loading, setLoading] = useState();
@@ -22,7 +22,7 @@ const useGetClubById = () => {
 
             return data;
         } catch (error) {
-            //toast.error(error.message);
+            toast.error(error.message);
             console.log(error.message);
         } finally {
             setLoading(false);

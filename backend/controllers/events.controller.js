@@ -31,8 +31,11 @@ export const getClubById = (req, res) => {
 export const getMyClubs = async (req, res) => {
     try {
         const userClubs = await Membership.findOne({ user: req.params.id });
-        if (!userClubs) {
+        /*if (!userClubs) {
             return res.status(400).json({ error: "Not enrolled in any club! Enrol Now...!!!" });
+        }*/
+        if (!userClubs) {
+            return;
         }
 
         const clubIds = userClubs.clubs;

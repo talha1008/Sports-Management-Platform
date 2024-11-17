@@ -29,7 +29,7 @@ const useConfirmRegistration = () => {
             }
 
             if (data) {
-                toast.success("Membership Bought successfully");
+                toast.success("Registered successfully");
                 return data;
             }
         } catch (error) {
