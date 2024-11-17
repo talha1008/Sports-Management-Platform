@@ -16,12 +16,9 @@ const useGetClubById = () => {
             });
             const data = await res.json();
             
-            if (res.status === 204) {
-                toast.custom(<span>{res.message}</span>)
-            }
-            /*if (res.status === 204) {
+            if (data.status === 204) {
                 toast.success(res.message);
-            }*/
+            }
 
             if (data.error) {
                 throw new Error(data.error);
