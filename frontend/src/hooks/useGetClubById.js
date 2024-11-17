@@ -1,5 +1,5 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 
 const useGetClubById = () => {
     const [loading, setLoading] = useState();
@@ -15,10 +15,6 @@ const useGetClubById = () => {
                 }
             });
             const data = await res.json();
-            
-            if (data.status === 204) {
-                toast.success(data.message);
-            }
 
             if (data.error) {
                 throw new Error(data.error);
