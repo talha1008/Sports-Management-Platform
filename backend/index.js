@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 const corsConfig = {
-    origin: "*",
+    origin: "https://sports-management-platform.vercel.app/login",
     methods: [
         'GET',
         'POST',
